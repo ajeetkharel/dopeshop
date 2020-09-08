@@ -1,0 +1,29 @@
+{% extends 'home/base.html' %}
+{% block sidebar %}
+<div class="col-md-4">
+    <div class="content-section">
+        <h3>Our Sidebar</h3>
+        <p class='text-muted'>You can put any information here you'd like.
+            <ul class="list-group">
+            <li class="list-group-item list-group-item-light">Latest Posts</li>
+            <li class="list-group-item list-group-item-light">Announcements</li>
+            <li class="list-group-item list-group-item-light">Calendars</li>
+            <li class="list-group-item list-group-item-light">etc</li>
+            </ul>
+        </p>
+    </div>
+</div>
+{% endblock sidebar %}
+{% block content %}
+    {% for item in items %}
+        <div class="col-xs-6">
+            <img class="" style="height: 190px; width: 310px;padding-top: 10px;" src="{{ item.image.url }}" alt="">
+        </div>
+        <div class="col-xs-6">
+            <a href="{% url 'item-detail' item.pk item.name%}" style="text-decoration: none;"><h1>{{ item.name }}</h1></a>
+            <h2>{{ item.owner }}</h2>
+            <h3>{{ item.category }}</h3>
+            <h3>{{ item.date_added }}</h3>
+        </div>
+    {% endfor %}
+{% endblock content %}

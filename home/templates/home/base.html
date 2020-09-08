@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">    
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <title> {{ title }} </title>
+
+  </head>
+  <style>
+    * {border-radius: 0 !important;}
+    #navBarSearchForm input[type=text]{width:430px !important;}
+  </style>
+<body>
+    
+  <div class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                <a  href="{% url 'shop-home' %}" class="navbar-brand">Dopeshop</a>
+            </div>
+
+            <div class="navbar-collapse collapse" id="mobile_menu">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="{% url 'shop-home' %}">Home</a></li>
+                    <li><a href="" class="dropdown-toggle" data-toggle="dropdown">Categories <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">About One</a></li>
+                            <li><a href="#">About Two</a></li>
+                            <li><a href="#">About Three</a></li>
+                            <li><a href="#">About Four</a></li>
+                            <li><a href="#">About Five</a></li>
+                            <li><a href="#">About Six</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Most Recent</a></li>
+                    <li><a href="{% url 'shop-contact' %}">Contact Us</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li>
+                        <form action="" class="navbar-form" role="search" id="navBarSearchForm">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="search" name="search" id="" placeholder="Search Anything Here..." class="form-control">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+                                </div>
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    {% if user.is_authenticated %}
+                        {% if user.is_superuser %}
+                            <li><a href="/admin"><i class="fas fa-user-cog"></i> &nbsp;Admin Panel</span></a></li>
+                        {% endif %}
+                        <li><a href="{% url 'item-create' %}"><i class="fas fa-plus-square"></i> &nbsp;Sell Your Item</span></a></li>
+                        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> &nbsp; {{ user.first_name }} <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Profile</a></li>
+                                <li><a href="{% url 'user-logout' %}">Logout <span class="glyphicon glyphicon-log-in"></span></a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li><a href="#" class="data-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Login / Sign Up <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{% url 'user-login' %}">Login</a></li>
+                                <li><a href="{% url 'user-register' %}">Sign Up</a></li>
+                            </ul>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+    <main role="main" class="container">
+        <div class="row">
+            {% block sidebar %} {% endblock sidebar %}
+            <div style="height: 50px;"></div>
+            <div class="col-md-8 panel panel-default">
+                {% if messages %}
+                    {%for message in messages%}
+                        <div class="alert alert-{{ message.tags }}"> {{message}} </div>
+                    {%endfor%}
+                {% endif %}
+                <div class="content-section">
+                    {% block content %}{% endblock content %}
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>
