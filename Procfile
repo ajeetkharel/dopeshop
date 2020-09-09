@@ -1,1 +1,1 @@
-web: gunicorn dopeshopapp.wsgi --log-file -
+web: gunicorn shopsite.wsgi --log-file -
