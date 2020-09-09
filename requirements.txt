@@ -52,7 +52,6 @@ ruamel-yaml==0.15.87
 scikit-learn==0.23.2
 scipy==1.5.2
 Send2Trash==1.5.0
-sip==4.19.13
 six==1.15.0
 sqlparse==0.3.1
 terminado==0.8.3
