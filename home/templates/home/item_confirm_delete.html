@@ -1,0 +1,15 @@
+{% extends 'home/base.html' %}
+{% block content %}
+<div class="content-section">
+    <form action="" method="POST" enctype='multipart/form-data'>
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <h2>Are you sure to delete the item "{{ object.name }}"?</h2>
+        </fieldset>
+        <div class="form-group">
+            <a href="{% url 'item-detail' object.pk object.name %}" style="background-color: rgb(0, 204, 255); text-decoration: None; color: beige; padding: 8px 12px 10px 12px;margin: 5px;">No</a>
+            <button class="btn btn-danger" type="submit">Delete</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}

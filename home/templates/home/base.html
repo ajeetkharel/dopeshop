@@ -66,7 +66,7 @@
                         <li><a href="{% url 'item-create' %}"><i class="fas fa-plus-square"></i> &nbsp;Sell Your Item</span></a></li>
                         <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> &nbsp; {{ user.first_name }} <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Profile</a></li>
+                                <li><a href="{% url 'owner-profile' %}">Profile</a></li>
                                 <li><a href="{% url 'user-logout' %}">Logout <span class="glyphicon glyphicon-log-in"></span></a></li>
                             </ul>
                         </li>

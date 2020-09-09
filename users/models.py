@@ -93,3 +93,10 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+class Profile(models.Model):
+    user = models.OneToOneField(Owner, on_delete=models.CASCADE)
+    image = models.ImageField(default='default_dp.jpg', upload_to='profile_images')
+
+    def __str__(self):
+        return f"Profile<{self.user.first_name}{self.user.pk}>"

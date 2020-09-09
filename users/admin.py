@@ -5,7 +5,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.exceptions import ValidationError
 
-from .models import Owner
+from .models import Owner, Profile
 
 
 class UserCreationForm(forms.ModelForm):
@@ -86,3 +86,7 @@ admin.site.register(Owner, UserAdmin)
 # ... and, since we're not using Django's built-in permissions,
 # unregister the Group model from admin.
 admin.site.unregister(Group)
+
+
+#register
+admin.site.register(Profile)
