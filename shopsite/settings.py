@@ -25,7 +25,7 @@ SECRET_KEY = 'bx(nvpj1n91qos$vu%hc6xb8wmiwz&evqo9yx47nj$f(znp7u*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dopeshopsite.herokuapp.com']
 
 
 # Application definition
