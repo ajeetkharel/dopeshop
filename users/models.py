@@ -102,8 +102,8 @@ class Profile(models.Model):
     def __str__(self):
         return f"Profile<{self.user.first_name}{self.user.pk}>"
 
-    def save(self):
-        super().save()
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
         img = Image.open(self.image.path)
         if img.width < 300 or img.height < 200:
             type = Image.BICUBIC
