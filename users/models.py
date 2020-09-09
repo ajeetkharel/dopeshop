@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser
 )
+from PIL import Image
 
 
 class MyUserManager(BaseUserManager):
@@ -100,3 +101,13 @@ class Profile(models.Model):
 
     def __str__(self):
         return f"Profile<{self.user.first_name}{self.user.pk}>"
+
+    def save(self):
+        super().save()
+        img = Image.open(self.image.path)
+        if img.width < 300 or img.height < 200:
+            type = Image.BICUBIC
+        else:
+            type = Image.LINEAR
+        img = img.resize((300,200), type)
+        img.save(self.image.path)

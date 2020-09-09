@@ -75,7 +75,3 @@ class OwnerItemListView(ListView):
         # Create any data and add it to the context
         context['title'] = 'Items by ' + self.model.owner.first_name
         return context
-
-@login_required
-def profile(request):
-    return render(request, 'users/profile.html', context={'title':'Profile'})

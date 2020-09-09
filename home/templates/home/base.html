@@ -63,6 +63,7 @@
                         {% if user.is_superuser %}
                             <li><a href="/admin"><i class="fas fa-user-cog"></i> &nbsp;Admin Panel</span></a></li>
                         {% endif %}
+                        <li><a href="{% url 'owner-item-detail' user.pk user.first_name %}"><i class="fas fa-list-alt"></i>&nbsp;My Items</span></a></li>
                         <li><a href="{% url 'item-create' %}"><i class="fas fa-plus-square"></i> &nbsp;Sell Your Item</span></a></li>
                         <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> &nbsp; {{ user.first_name }} <span class="caret"></span></a>
                             <ul class="dropdown-menu">
