@@ -131,4 +131,6 @@ LOGIN_REDIRECT_URL = 'shop-home'
 LOGIN_URL = 'user-login'
 
 
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+AUTH_USER_MODEL = 'users.Owner'

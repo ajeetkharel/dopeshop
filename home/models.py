@@ -1,15 +1,22 @@
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import User
+from users.models import Owner
 from django.urls import reverse
 from users.models import Category
+
+USAGE_CHOICES = (
+    ('N', 'New'),
+    ('U', 'Used'),
+)
 
 class Item(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
-    subcategory = models.ForeignKey(Category, on_delete=models.CASCADE)
+    usage = models.CharField(max_length=1, choices=USAGE_CHOICES)
+    condition = models.CharField(max_length=255, blank=True)
+    subcategory = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="Category")
     date_added = models.DateTimeField(default=timezone.now)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
     price = models.IntegerField()
     image = models.ImageField(default='default_item.jpg', upload_to='item_images')
 

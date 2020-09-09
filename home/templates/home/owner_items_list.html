@@ -1,0 +1,23 @@
+{% extends 'home/base.html' %}
+{% block content %}
+<h1>Items by {{ user.first_name }} {{ user.last_name }} </h1>
+{% for item in items %}
+    <div class="row panel panel-default" style="padding-bottom: 10px;">
+        <div class="col-xs-5">
+            <img class="" style="height: 190px; width: 310px;padding-top: 10px;" src="{{ item.image.url }}" alt="">
+        </div>
+        <div class="col-xs-6" style="margin: -13px 0px 0px 10px">
+            <a href="{% url 'item-detail' item.pk item.name%}" style="text-decoration: none; color: rgb(49, 48, 48);"><h2>{{ item.name }}</h2></a>
+            <a href="" style="text-decoration: none; color: rgb(69, 68, 71);"><span style="font-size: 15px;"><i class="fas fa-user" style="color: rgba(0, 47, 255, 0.877); font-size: 0.81em;"></i> {{ item.owner.first_name }}</span></a>&nbsp;&nbsp;
+            <a href="" style="text-decoration: none; color: rgb(59, 58, 58);"><span><i class="fas fa-th-list" style="color: rgba(10, 66, 219, 0.842); font-size: 0.81em;"></i> {{ item.subcategory }}</span></a>&nbsp;&nbsp;
+            <span style="font-size: 14px; color: rgba(83, 83, 81, 0.85);"><i class="far fa-calendar-alt" style="color: rgb(0, 47, 255); font-size: 0.81em;"></i> {{ item.date_added|date:"M,d Y" }}</span>
+            <div>
+                <hr>
+                <p style="color: rgb(29, 28, 28);">{{ item.description }}</p>
+                <hr style="margin: 8px;">
+                <p style="color: rgb(29, 28, 28);"><span style="color: rgb(0, 26, 255);">Price:</span> Rs.{{ item.price }}</p>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+{% endblock content %}

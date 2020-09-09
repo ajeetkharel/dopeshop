@@ -3,6 +3,8 @@ from .forms import UserRegisterForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from django.contrib.auth.views import LoginView
+from django.urls import reverse_lazy
 
 def register(request):
     if request.method == "POST":
@@ -12,10 +14,10 @@ def register(request):
             messages.success(request, "Account created successfully. Login now!")
             return redirect('user-login')
     else:
-        if request.user.is_authenticated:
-            return redirect('shop-home')
-        else:
-            form = UserRegisterForm()
+        # if request.user.email != "":
+        #     return redirect('shop-home')
+        # else:
+        form = UserRegisterForm()
     return render(request, 'users/register.html', {'title':"Register", 'form':form})
 
 @login_required

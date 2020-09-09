@@ -87,8 +87,7 @@
     <main role="main" class="container">
         <div class="row">
             {% block sidebar %} {% endblock sidebar %}
-            <div style="height: 50px;"></div>
-            <div class="col-md-8 panel panel-default">
+            <div class="col-md-8">
                 {% if messages %}
                     {%for message in messages%}
                         <div class="alert alert-{{ message.tags }}"> {{message}} </div>

@@ -1,8 +1,14 @@
 {% extends 'home/base.html' %}
 {% block content %}
-    <h1>{{ object.name }}</h1>
-    <h2>{{ object.owner }}</h2>
-    <h4>{{ object.description }}</h4>
-    <h3>{{ object.category }}</h3>
-    <h3>{{ object.date_added }}</h3>
+<div class="row">
+    <div class="col-xs-6">
+        <img class="" style="height: 190px; width: 310px;padding-top: 10px;" src="{{ item.image.url }}" alt="">
+    </div>
+    <div class="col-xs-6">
+        <h1 style="text-decoration: none;">{{ item.name }}</h1>
+        <p>{{ item.owner }}</p>
+        <h3>{{ item.category }}</h3>
+        <h3>{{ item.date_added }}</h3>
+    </div>
+</div>
 {% endblock content %}
